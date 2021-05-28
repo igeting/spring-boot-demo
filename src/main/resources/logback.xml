@@ -69,7 +69,7 @@
     </logger>
 
     <!-- dao包下的日志配置 -->
-    <logger name="com.example.demo.dao" level="DEBUG" additivity="false">
+    <logger name="com.example.demo.mapper" level="DEBUG" additivity="false">
         <appender-ref ref="SQL"/>
     </logger>
 
