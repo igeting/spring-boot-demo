@@ -30,7 +30,7 @@ public class FileServiceImpl implements FileService {
      * @return
      */
     @Override
-    public CommonResult uploadFile(MultipartFile file) {
+    public CommonResult uploadFile(MultipartFile file) throws Exception {
         CommonResult result = new CommonResult();
         String name = file.getOriginalFilename();
         log.info("upload file name:{}", name);
@@ -45,12 +45,11 @@ public class FileServiceImpl implements FileService {
             InputStream fi = file.getInputStream();
             FileCopyUtils.copy(fi, new FileOutputStream(fo));
             result.setCode(200);
-            result.setMessage("upload file success");
+            result.setMessage("success");
             result.setData(fo.getPath());
         } catch (Exception e) {
-            log.error("FileServiceImpl uploadFile error", e);
+            throw e;
         }
         return result;
     }
-
 }

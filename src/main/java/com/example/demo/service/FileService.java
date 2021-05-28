@@ -10,5 +10,5 @@ public interface FileService {
      * @param file
      * @return
      */
-    CommonResult uploadFile(MultipartFile file);
+    CommonResult uploadFile(MultipartFile file) throws Exception;
 }

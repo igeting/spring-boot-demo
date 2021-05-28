@@ -32,7 +32,7 @@ public class FileController {
         try {
             return fileService.uploadFile(file);
         } catch (Exception e) {
-            log.error("FileController upload error", e);
+            log.error("FileController uploadFile error", e);
         }
         return new CommonResult();
     }
