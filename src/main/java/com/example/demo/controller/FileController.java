@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.bean.CommonResult;
+import com.example.demo.entity.base.CommonResult;
 import com.example.demo.service.FileService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +14,8 @@ import org.springframework.web.multipart.MultipartFile;
 @RestController
 @RequestMapping(value = "/api/file")
 public class FileController {
-    private final FileService fileService;
-
     @Autowired
-    public FileController(FileService fileService) {
-        this.fileService = fileService;
-    }
+    private FileService fileService;
 
     /**
      * 上传文件
