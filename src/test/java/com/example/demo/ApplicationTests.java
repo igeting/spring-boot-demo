@@ -19,10 +19,13 @@ import java.util.List;
 @SpringBootTest
 class ApplicationTests {
     @Autowired
-    RestTemplate restTemplate;
+    private RestTemplate restTemplate;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
+
+    @Autowired
+    private Gson gson;
 
     @Test
     void TestRequest() {
@@ -47,20 +50,19 @@ class ApplicationTests {
         user.setUsername("jack");
         user.setPassword("123456");
         //对象转字符串
-        log.info(new Gson().toJson(user));
+        log.info(gson.toJson(user));
         List<User> list = new ArrayList<>();
         list.add(user);
         list.add(user);
         list.add(user);
-        log.info(new Gson().toJson(list));
+        log.info(gson.toJson(list));
 
         //字符串转对象
-        User u = new Gson().fromJson("{\"name\":\"jack\",\"pass\":\"123456\"}", User.class);
+        User u = gson.fromJson("{\"name\":\"jack\",\"pass\":\"123456\"}", User.class);
         log.info(u.toString());
-        List<User> us = new Gson().fromJson("[{\"name\":\"jack\",\"pass\":\"123456\"},{\"name\":\"jack\",\"pass\":\"123456\"},{\"name\":\"jack\",\"pass\":\"123456\"}]",
+        List<User> us = gson.fromJson("[{\"name\":\"jack\",\"pass\":\"123456\"},{\"name\":\"jack\",\"pass\":\"123456\"},{\"name\":\"jack\",\"pass\":\"123456\"}]",
                 new TypeToken<List<User>>() {
                 }.getType());
         log.info(us.toString());
     }
-
 }

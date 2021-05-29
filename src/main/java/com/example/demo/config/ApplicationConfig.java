@@ -1,5 +1,6 @@
 package com.example.demo.config;
 
+import com.google.gson.Gson;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.ClientHttpRequestFactory;
@@ -20,4 +21,10 @@ public class ApplicationConfig {
     RestTemplate restTemplate(ClientHttpRequestFactory factory) {
         return new RestTemplate(factory);
     }
+
+    @Bean
+    Gson gson() {
+        return new Gson();
+    }
+
 }
