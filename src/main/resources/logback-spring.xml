@@ -17,7 +17,6 @@
     <property name="log_maxFileSize" value="100MB"/>
     <property name="log_fileNamePattern" value="-%d{yyyyMMdd}.%i.log"/>
 
-    <!-- 输出到控制台，一般生产环境都是后台启动，这个没太大作用 -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>INFO</level>
@@ -27,7 +26,6 @@
         </encoder>
     </appender>
 
-    <!-- 输出到app.log文件 -->
     <appender name="APP" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${log_path}/app.log</file>
         <encoder charset="UTF-8">
@@ -47,7 +45,7 @@
     </root>
 
     <logger name="com.example.demo.mapper" level="DEBUG" additivity="false">
-        <appender-ref ref="APP"/>
+        <appender-ref ref="CONSOLE"/>
     </logger>
 
 </configuration>
