@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.client.RestTemplate;
@@ -116,6 +117,15 @@ class ApplicationTests {
         Query query = entityManager.createNativeQuery(sql);
         List<User> result = query.getResultList();
         System.out.println(gson.toJson(result));
+    }
+
+    @Autowired
+    StringRedisTemplate redisTemplate;
+
+    @Test
+    void TestRedis(){
+        redisTemplate.opsForValue().set("name", "jack");
+        System.out.println(redisTemplate.opsForValue().get("name"));
     }
 
 }

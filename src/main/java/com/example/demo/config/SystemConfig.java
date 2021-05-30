@@ -10,7 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 @MapperScan(value = {"com.example.demo.mapper"})
 @Configuration
-public class ApplicationConfig {
+public class SystemConfig {
     @Bean
     public ClientHttpRequestFactory clientHttpRequestFactory() {
         SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
@@ -28,5 +28,4 @@ public class ApplicationConfig {
     Gson gson() {
         return new Gson();
     }
-
 }
