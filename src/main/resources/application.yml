@@ -1,11 +1,7 @@
-logging:
-  config: classpath:logback-spring.xml
-
 spring:
-  servlet:
-    multipart:
-      max-request-size: 100MB
-      max-file-size: 100MB
   profiles:
     active: dev
     include: other
+
+logging:
+  config: classpath:logback-spring.xml
