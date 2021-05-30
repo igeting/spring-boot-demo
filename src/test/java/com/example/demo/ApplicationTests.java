@@ -4,19 +4,18 @@ import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.Assert;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.client.RestTemplate;
 
+import java.sql.DatabaseMetaData;
 import java.util.ArrayList;
 import java.util.List;
 
-@Slf4j
 @SpringBootTest
 class ApplicationTests {
     @Autowired
@@ -31,18 +30,18 @@ class ApplicationTests {
     @Test
     void TestRequest() {
         ResponseEntity<String> res = restTemplate.getForEntity("http://www.baidu.com", null, String.class);
-        log.info("res:{}", res);
+        System.out.println(res);
     }
 
     @Test
     void TestUser() {
         int count = userService.userCount();
-        Assert.isTrue(count > 0, "user is null");
+        System.out.println(count);
         List<User> users = userService.userList();
-        log.info("user list:{}", users);
+        System.out.println(users.toString());
         Gson gson = new Gson();
         String str = gson.toJson(users);
-        log.info(str);
+        System.out.println(str);
     }
 
     @Test
@@ -51,20 +50,20 @@ class ApplicationTests {
         user.setUsername("jack");
         user.setPassword("123456");
         //对象转字符串
-        log.info(gson.toJson(user));
+        System.out.println(gson.toJson(user));
         List<User> list = new ArrayList<>();
         list.add(user);
         list.add(user);
         list.add(user);
-        log.info(gson.toJson(list));
+        System.out.println(gson.toJson(list));
 
         //字符串转对象
         User u = gson.fromJson("{\"name\":\"jack\",\"pass\":\"123456\"}", User.class);
-        log.info(u.toString());
+        System.out.println(u.toString());
         List<User> us = gson.fromJson("[{\"name\":\"jack\",\"pass\":\"123456\"},{\"name\":\"jack\",\"pass\":\"123456\"},{\"name\":\"jack\",\"pass\":\"123456\"}]",
                 new TypeToken<List<User>>() {
                 }.getType());
-        log.info(us.toString());
+        System.out.println(us.toString());
     }
 
     @Value("${env}")
@@ -74,9 +73,24 @@ class ApplicationTests {
     private String other;
 
     @Test
-    void TestProperty() {
-        log.info(env);
-        log.info(other);
+    void TestConfig() {
+        System.out.println(env);
+        System.out.println(other);
+    }
+
+    @Autowired
+    JdbcTemplate jdbcTemplate;
+
+    @Test
+    void TestDatasource() {
+        System.out.println(jdbcTemplate.toString());
+        try {
+            DatabaseMetaData metaData = jdbcTemplate.getDataSource().getConnection().getMetaData();
+            System.out.println(metaData.getDriverName());
+            System.out.println(metaData.getUserName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
