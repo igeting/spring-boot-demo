@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.dao.UserDao;
 import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 import com.google.gson.Gson;
@@ -12,6 +13,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.client.RestTemplate;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import java.sql.DatabaseMetaData;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,9 +35,11 @@ class ApplicationTests {
 
     @Test
     void TestUser() {
-        int count = userService.userCount();
+        int count = userService.getUserCount();
         System.out.println(count);
-        List<User> users = userService.userList();
+        User u = userService.getUser(1);
+        System.out.println(u);
+        List<User> users = userService.getUsers();
         System.out.println(users.toString());
         Gson gson = new Gson();
         String str = gson.toJson(users);
@@ -49,15 +54,14 @@ class ApplicationTests {
         User user = new User();
         user.setUsername("jack");
         user.setPassword("123456");
-        //对象转字符串
         System.out.println(gson.toJson(user));
+
         List<User> list = new ArrayList<>();
         list.add(user);
         list.add(user);
         list.add(user);
         System.out.println(gson.toJson(list));
 
-        //字符串转对象
         User u = gson.fromJson("{\"name\":\"jack\",\"pass\":\"123456\"}", User.class);
         System.out.println(u.toString());
         List<User> us = gson.fromJson("[{\"name\":\"jack\",\"pass\":\"123456\"},{\"name\":\"jack\",\"pass\":\"123456\"},{\"name\":\"jack\",\"pass\":\"123456\"}]",
@@ -66,15 +70,11 @@ class ApplicationTests {
         System.out.println(us.toString());
     }
 
-    @Value("${env}")
-    private String env;
-
     @Value("${other}")
     private String other;
 
     @Test
     void TestConfig() {
-        System.out.println(env);
         System.out.println(other);
     }
 
@@ -91,6 +91,31 @@ class ApplicationTests {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Autowired
+    UserDao userDao;
+
+    @Test
+    void TestDao() {
+        /*User u = new User();
+        u.setUsername("test");
+        u.setPassword("123456");
+        User save = userDao.save(u);
+        System.out.println(save.toString());*/
+        List<User> list = userDao.allUsers();
+        System.out.println(list);
+    }
+
+    @Autowired
+    EntityManager entityManager;
+
+    @Test
+    void TestEntityManager(){
+        String sql = "select * from user";
+        Query query = entityManager.createNativeQuery(sql);
+        List<User> result = query.getResultList();
+        System.out.println(gson.toJson(result));
     }
 
 }

@@ -7,7 +7,9 @@ import java.util.List;
 
 @Repository
 public interface UserMapper {
-    int userCount();
+    int getUserCount();
 
-    List<User> userList();
+    User getUser(int id);
+
+    List<User> getUsers();
 }

@@ -5,7 +5,9 @@ import com.example.demo.entity.User;
 import java.util.List;
 
 public interface UserService {
-    int userCount();
+    int getUserCount();
 
-    List<User> userList();
+    User getUser(int id);
+
+    List<User> getUsers();
 }
