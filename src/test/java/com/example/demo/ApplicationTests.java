@@ -21,17 +21,14 @@ class ApplicationTests {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Autowired
-    private UserService userService;
-
-    @Autowired
-    private Gson gson;
-
     @Test
     void TestRequest() {
         ResponseEntity<String> res = restTemplate.getForEntity("http://www.baidu.com", null, String.class);
         System.out.println(res);
     }
+
+    @Autowired
+    private UserService userService;
 
     @Test
     void TestUser() {
@@ -43,6 +40,9 @@ class ApplicationTests {
         String str = gson.toJson(users);
         System.out.println(str);
     }
+
+    @Autowired
+    private Gson gson;
 
     @Test
     void TestGson() {
