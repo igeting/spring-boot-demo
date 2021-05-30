@@ -6,7 +6,6 @@ spring:
     multipart:
       max-request-size: 100MB
       max-file-size: 100MB
-
-file:
-  upload:
-    path: ./upload
+  profiles:
+    active: dev
+    include: other

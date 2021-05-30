@@ -7,6 +7,7 @@ import com.google.gson.reflect.TypeToken;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.Assert;
@@ -65,4 +66,17 @@ class ApplicationTests {
                 }.getType());
         log.info(us.toString());
     }
+
+    @Value("${env}")
+    private String env;
+
+    @Value("${other}")
+    private String other;
+
+    @Test
+    void TestProperty() {
+        log.info(env);
+        log.info(other);
+    }
+
 }

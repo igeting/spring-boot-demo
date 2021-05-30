@@ -15,7 +15,7 @@ import java.io.InputStream;
 
 @Slf4j
 @Component
-@PropertySource(value = {"classpath:other.yml"})
+@PropertySource(value = {"classpath:version.yml"})
 public class FileServiceImpl implements FileService {
     @Value("${file.upload.path}")
     private String uploadPath;
