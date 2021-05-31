@@ -6,7 +6,7 @@ spring:
     password: 123456
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
-      max-lifetime: 600000
+      max-lifetime: 1800000
       maximum-pool-size: 100
 
   jpa:
@@ -18,10 +18,8 @@ spring:
   redis:
     host: 127.0.0.1
     port: 6379
-    database: 0
     password:
-#    cluster:
-#      nodes: 127.0.0.1:6379
+    database: 0
     timeout: 1000
 
   servlet:
