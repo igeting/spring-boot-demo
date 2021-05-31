@@ -17,6 +17,7 @@
     <property name="log_pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{50} - %msg%n"/>
     <property name="log_maxHistory" value="15"/>
     <property name="log_maxFileSize" value="100MB"/>
+    <property name="log_totalFileSize" value="10GB"/>
     <property name="log_fileNamePattern" value="-%d{yyyyMMdd}.%i.log"/>
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
@@ -39,6 +40,8 @@
                 <maxFileSize>${log_maxFileSize}</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
             <maxHistory>${log_maxHistory}</maxHistory>
+            <totalSizeCap>${log_totalFileSize}</totalSizeCap>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
         </rollingPolicy>
     </appender>
 
