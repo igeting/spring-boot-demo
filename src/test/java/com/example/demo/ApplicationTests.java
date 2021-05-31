@@ -112,7 +112,7 @@ class ApplicationTests {
     EntityManager entityManager;
 
     @Test
-    void TestEntityManager(){
+    void TestEntityManager() {
         String sql = "select * from user";
         Query query = entityManager.createNativeQuery(sql);
         List<User> result = query.getResultList();
@@ -123,7 +123,7 @@ class ApplicationTests {
     StringRedisTemplate redisTemplate;
 
     @Test
-    void TestRedis(){
+    void TestRedis() {
         redisTemplate.opsForValue().set("name", "jack");
         System.out.println(redisTemplate.opsForValue().get("name"));
     }
