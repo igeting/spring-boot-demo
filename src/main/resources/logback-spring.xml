@@ -52,5 +52,4 @@
     <root level="INFO">
         <appender-ref ref="APP"/>
     </root>
-
 </configuration>
