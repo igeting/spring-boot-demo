@@ -45,12 +45,12 @@
         </rollingPolicy>
     </appender>
 
-    <root level="INFO">
-        <appender-ref ref="APP"/>
-    </root>
-
     <logger name="com.example.demo.mapper" level="DEBUG" additivity="false">
         <appender-ref ref="CONSOLE"/>
     </logger>
+
+    <root level="INFO">
+        <appender-ref ref="APP"/>
+    </root>
 
 </configuration>
