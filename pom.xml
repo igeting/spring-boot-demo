@@ -12,6 +12,7 @@
 
     <modules>
         <module>core</module>
+        <module>nsq</module>
     </modules>
 
     <groupId>com.example</groupId>
