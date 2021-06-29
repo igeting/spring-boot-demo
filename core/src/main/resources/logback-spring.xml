@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="10 seconds" debug="false">
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <contextName>logback</contextName>
+
+    <define name="hostname" class="com.example.core.utils.HostnameProperty"/>
+
+    <property name="log_path" value="./log"/>
+    <!--
+    %d{yyyy-MM-dd HH:mm:ss.SSS}：日志输出时间，精确到毫秒；
+    %-5level：日志级别，并且使用5个字符靠左对齐；
+    %thread：输出日志的进程名字；
+    %logger{50}：日志输出者的名字；
+    %msg：日志消息；
+    %n：换行符；
+    -->
+    <property name="log_pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %logger{50} - %msg%n"/>
+    <property name="log_maxHistory" value="15"/>
+    <property name="log_maxFileSize" value="100MB"/>
+    <property name="log_totalFileSize" value="10GB"/>
+    <property name="log_fileNamePattern" value="-%d{yyyyMMdd}.%i.log"/>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <encoder charset="UTF-8">
+            <pattern>${log_pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="APP" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log_path}/${hostname}/app.log</file>
+        <encoder charset="UTF-8">
+            <pattern>${log_pattern}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log_path}/${hostname}/app${log_fileNamePattern}</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>${log_maxFileSize}</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>${log_maxHistory}</maxHistory>
+            <totalSizeCap>${log_totalFileSize}</totalSizeCap>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+    </appender>
+
+    <logger name="com.example.core.mapper" level="DEBUG" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="APP"/>
+    </root>
+</configuration>
