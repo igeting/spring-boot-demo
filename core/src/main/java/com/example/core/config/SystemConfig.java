@@ -2,11 +2,13 @@ package com.example.core.config;
 
 import com.google.gson.Gson;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
+@ComponentScan(value = {"com.example.nsq"})
 @Configuration
 public class SystemConfig {
     @Bean
