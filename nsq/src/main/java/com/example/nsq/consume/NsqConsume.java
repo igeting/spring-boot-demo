@@ -1,31 +1,42 @@
 package com.example.nsq.consume;
 
 import com.github.brainlag.nsq.NSQConsumer;
-import com.github.brainlag.nsq.lookup.DefaultNSQLookup;
+import com.github.brainlag.nsq.callbacks.NSQMessageCallback;
 import com.github.brainlag.nsq.lookup.NSQLookup;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Slf4j
+@Component
 public class NsqConsume {
-    public static void nsqConsume() {
-        NSQLookup lookup = new DefaultNSQLookup();
-        lookup.addLookupAddress("127.0.0.1", 4161);
-        NSQConsumer consumer = new NSQConsumer(lookup, "test", "nsq_to_file", message -> {
-            byte b[] = message.getMessage();
-            String s = new String(b);
-            System.out.println(s);
-            message.finished();
-        });
+    @Value("${nsq.topic}")
+    private String topic;
+    @Value("${nsq.channel}")
+    private String channel;
+
+    @Autowired
+    private NSQLookup nsqLookup;
+
+    public void consume(NSQMessageCallback callback) {
+        //callback
+        /*
+            message -> {
+                byte msg[] = message.getMessage();
+                result = new String(msg);
+                message.finished();
+            }
+         */
+        NSQConsumer consumer = new NSQConsumer(nsqLookup, topic, channel, callback);
         consumer.start();
         try {
             Thread.sleep(3000);
-        } catch (Exception e) {
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
         consumer.setExecutor(command -> {
             //todo
         });
-    }
-
-    public static void main(String[] args) {
-        nsqConsume();
     }
 }
