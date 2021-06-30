@@ -1,34 +1,27 @@
 package com.example.nsq.produce;
 
-import com.github.brainlag.nsq.NSQProducer;
+import com.sproutsocial.nsq.Publisher;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
-
 @Slf4j
 @Component
-public class NsqProduce {
+public class NsqPublisher {
     @Value("${nsq.topic}")
     private String topic;
     @Value("${nsq.channel}")
     private String channel;
 
     @Autowired
-    private NSQProducer nsqProducer;
+    Publisher publisher;
 
-    @PostConstruct
-    public void init() {
-        nsqProducer.start();
-    }
-
-    public void produce(String message) {
+    public void publish(String message) {
         try {
-            nsqProducer.produce(topic, message.getBytes());
+            publisher.publish(topic, message.getBytes());
         } catch (Exception e) {
-            log.error("NsqProduce nsqProduce error", e);
+            log.error("NsqPublisher publish error", e);
         }
     }
 }

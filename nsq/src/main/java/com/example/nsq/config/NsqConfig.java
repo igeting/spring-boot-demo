@@ -3,6 +3,8 @@ package com.example.nsq.config;
 import com.github.brainlag.nsq.NSQProducer;
 import com.github.brainlag.nsq.lookup.DefaultNSQLookup;
 import com.github.brainlag.nsq.lookup.NSQLookup;
+import com.sproutsocial.nsq.Publisher;
+import com.sproutsocial.nsq.Subscriber;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,6 +20,18 @@ public class NsqConfig {
     private String nsqdHost;
     @Value("${nsq.nsqd.port}")
     private int nsqdPort;
+
+    @Bean
+    public Publisher publisher() {
+        Publisher publisher = new Publisher(nsqdHost);
+        return publisher;
+    }
+
+    @Bean
+    public Subscriber subscriber() {
+        Subscriber subscriber = new Subscriber(lookupHost);
+        return subscriber;
+    }
 
     @Bean
     public NSQLookup nsqLookup() {

@@ -19,8 +19,8 @@ public class NsqConsume {
     @Autowired
     private NSQLookup nsqLookup;
 
-    public void consume(NSQMessageCallback callback) {
-        //callback
+    public void consume(NSQMessageCallback handler) {
+        //handler
         /*
             message -> {
                 byte msg[] = message.getMessage();
@@ -28,15 +28,17 @@ public class NsqConsume {
                 message.finished();
             }
          */
-        NSQConsumer consumer = new NSQConsumer(nsqLookup, topic, channel, callback);
-        consumer.start();
         try {
+            NSQConsumer consumer = new NSQConsumer(nsqLookup, topic, channel, handler);
+            consumer.start();
+
             Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+
+            consumer.setExecutor(command -> {
+                //todo
+            });
+        } catch (Exception e) {
+            log.error("NsqConsume consume error", e);
         }
-        consumer.setExecutor(command -> {
-            //todo
-        });
     }
 }
