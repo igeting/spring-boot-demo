@@ -1,9 +1,9 @@
 nsq:
+  topic: test
+  channel: channel1
   lookup:
     host: localhost
     port: 4161
   nsqd:
     host: localhost
     port: 4150
-  topic: test
-  channel: channel1
