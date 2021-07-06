@@ -1,5 +1,6 @@
 package com.example.core;
 
+import com.example.core.config.ObjectConfig;
 import com.example.core.dao.UserDao;
 import com.example.core.entity.User;
 import com.example.core.service.UserService;
@@ -20,6 +21,7 @@ import java.sql.DatabaseMetaData;
 import java.util.ArrayList;
 import java.util.List;
 
+//@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
 @SpringBootTest
 class CoreApplicationTests {
     @Autowired
@@ -126,6 +128,20 @@ class CoreApplicationTests {
     void TestRedis() {
         redisTemplate.opsForValue().set("name", "jack");
         System.out.println(redisTemplate.opsForValue().get("name"));
+    }
+
+    @Autowired
+    ObjectConfig objectConfig;
+
+    @Test
+    void TestPropertiesConfig() {
+        String id = objectConfig.getId();
+        String pro1 = objectConfig.getPro1();
+        String pro2 = objectConfig.getPro2();
+        System.out.println(String.format("id:%s, pro1:%s, pro2:%s", id, pro1, pro2));
+        String name = objectConfig.getUser().getName();
+        int age = objectConfig.getUser().getAge();
+        System.out.println(String.format("name:%s, age:%d\n", name, age));
     }
 
 }
