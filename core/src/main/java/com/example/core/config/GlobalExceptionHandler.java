@@ -1,6 +1,5 @@
 package com.example.core.config;
 
-import com.example.core.entity.base.BaseResult;
 import com.example.core.entity.base.WebResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -15,11 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 public class GlobalExceptionHandler {
     @ResponseBody
     @ExceptionHandler(value = NullPointerException.class)
-    public BaseResult globalException(HttpServletRequest request, HttpServletResponse response, NullPointerException e) {
-        log.info("GlobalExceptionHandler handler, code:{}", response.getStatus());
-        BaseResult result = new WebResult(WebResult.RESULT_FAIL, "result:" + response.getStatus(),
-                "exception:" + e.getMessage()
-        );
+    public WebResult globalException(HttpServletRequest request, HttpServletResponse response, NullPointerException e) {
+        log.info("GlobalExceptionHandler...");
+        WebResult result = new WebResult();
+        result.setCode(WebResult.RESULT_FAIL);
+        result.setMessage("null point exception:" + e.getMessage());
         return result;
     }
+
 }
