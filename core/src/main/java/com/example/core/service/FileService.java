@@ -1,6 +1,6 @@
 package com.example.core.service;
 
-import com.example.core.entity.base.CommonResult;
+import com.example.core.entity.base.BaseResult;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface FileService {
@@ -10,5 +10,5 @@ public interface FileService {
      * @param file
      * @return
      */
-    CommonResult uploadFile(MultipartFile file) throws Exception;
+    BaseResult uploadFile(MultipartFile file) throws Exception;
 }

@@ -1,6 +1,6 @@
 package com.example.core.controller;
 
-import com.example.core.entity.base.CommonResult;
+import com.example.core.entity.base.BaseResult;
 import com.example.core.service.FileService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +24,12 @@ public class FileController {
      * @return
      */
     @PostMapping(value = "/uploadFile")
-    public CommonResult uploadFile(@RequestParam MultipartFile file) {
+    public BaseResult uploadFile(@RequestParam MultipartFile file) {
         try {
             return fileService.uploadFile(file);
         } catch (Exception e) {
             log.error("FileController uploadFile error", e);
         }
-        return new CommonResult();
+        return new BaseResult();
     }
 }

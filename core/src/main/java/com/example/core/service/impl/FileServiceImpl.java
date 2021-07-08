@@ -1,6 +1,6 @@
 package com.example.core.service.impl;
 
-import com.example.core.entity.base.CommonResult;
+import com.example.core.entity.base.BaseResult;
 import com.example.core.service.FileService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,8 +30,8 @@ public class FileServiceImpl implements FileService {
      * @return
      */
     @Override
-    public CommonResult uploadFile(MultipartFile file) throws Exception {
-        CommonResult result = new CommonResult();
+    public BaseResult uploadFile(MultipartFile file) throws Exception {
+        BaseResult result = new BaseResult();
         String name = file.getOriginalFilename();
         log.info("upload file name:{}", name);
         long size = file.getSize();
