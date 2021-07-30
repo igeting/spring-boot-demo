@@ -1,4 +1,4 @@
 spring:
   profiles:
     active: dev,nsq
-    include: other
+    include: other,swagger

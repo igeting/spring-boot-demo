@@ -1,4 +1,4 @@
-package com.example.core.controller;
+package com.example.core.controller.test;
 
 import com.example.core.entity.base.BaseResult;
 import com.example.core.service.FileService;

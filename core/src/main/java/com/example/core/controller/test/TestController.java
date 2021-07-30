@@ -1,4 +1,4 @@
-package com.example.core.controller;
+package com.example.core.controller.test;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestMapping;
