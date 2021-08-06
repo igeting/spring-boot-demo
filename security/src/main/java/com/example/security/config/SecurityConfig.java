@@ -25,15 +25,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().frameOptions().sameOrigin();
 
         http.formLogin()
-                .loginPage("/login.html")
-                .loginProcessingUrl("/login")
+                .loginPage("/")
+                .loginProcessingUrl("/sign")
                 .successForwardUrl("/welcome")
-                .failureUrl("/error.html")
+                .failureUrl("/fail")
                 .permitAll();
 
         http.logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/login.html")
+                .logoutSuccessUrl("/")
                 .permitAll();
 
         http.authorizeRequests()
