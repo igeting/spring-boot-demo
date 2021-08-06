@@ -3,18 +3,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>com.example</groupId>
+        <artifactId>base</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../base/pom.xml</relativePath>
+    </parent>
+
     <groupId>com.example</groupId>
     <artifactId>core</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <name>core</name>
     <description>springboot core</description>
-
-    <parent>
-        <groupId>com.example</groupId>
-        <artifactId>demo</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-    </parent>
 
     <dependencies>
         <dependency>
