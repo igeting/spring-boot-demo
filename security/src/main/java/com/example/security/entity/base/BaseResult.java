@@ -1,8 +1,10 @@
 package com.example.security.entity.base;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
+@EqualsAndHashCode
 public class BaseResult extends Basic {
     public static final int RESULT_FAIL = 0;
     public static final int RESULT_SUCCESS = 1;
@@ -26,13 +28,13 @@ public class BaseResult extends Basic {
         this.data = data;
     }
 
-    public static BaseResult success(Object data){
+    public static BaseResult success(Object data) {
         BaseResult result = new BaseResult(200, "success");
         result.setData(data);
         return result;
     }
 
-    public static BaseResult success(Object data, Object other){
+    public static BaseResult success(Object data, Object other) {
         BaseResult result = new BaseResult(200, "success");
         result.setData(data);
         result.setOther(other);
