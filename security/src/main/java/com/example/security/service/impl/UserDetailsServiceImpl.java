@@ -10,15 +10,15 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Service("userDetailsService")
 public class UserDetailsServiceImpl implements UserDetailsService {
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         username = username.toUpperCase();
         //password
-        String password = "123456";
+        String password = "admin";
         password = new BCryptPasswordEncoder().encode(password);
 
         //role

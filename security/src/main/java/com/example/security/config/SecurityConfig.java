@@ -20,32 +20,29 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin() //表单登录
-                .loginPage("/login") //自定义登录页面
-                //.loginProcessingUrl("/logins") //处理登录请求,需要执行UserDetailsServiceImpl
+        http.csrf().disable();
+
+        http.headers().frameOptions().sameOrigin();
+
+        http.formLogin()
+                .loginPage("/login.html")
+                .loginProcessingUrl("/login")
                 .successForwardUrl("/welcome")
-                .failureUrl("/fail").permitAll()
+                .failureUrl("/error.html")
+                .permitAll();
 
-                .and()
-                .logout()
+        http.logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/login")
+                .logoutSuccessUrl("/login.html")
+                .permitAll();
 
-                .and()
-                .authorizeRequests()
-                .antMatchers("/test") //不需要认证的请求
-                .permitAll() //对请求授权
-                .anyRequest() //任何请求
-                .authenticated() //都需要认证
+        http.authorizeRequests()
+                .antMatchers("/other")
+                .permitAll();
 
-                .and()
-                .headers()
-                .frameOptions()
-                .sameOrigin()
-
-                .and()
-                .csrf()
-                .disable(); //将防护跨站请求伪造功能设置为不可以
+        http.authorizeRequests()
+                .anyRequest()
+                .authenticated();
     }
 
     @Bean
