@@ -11,8 +11,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RSAUtil {
-    private static String privateKey;
-    private static String publicKey;
+    public static String privateKey;
+    public static String publicKey;
 
     public static Map<String, String> genKeyPair() throws NoSuchAlgorithmException {
         Map<String, String> pair = new HashMap<>();
@@ -54,7 +54,6 @@ public class RSAUtil {
             genKeyPair();
             System.out.println(RSAUtil.privateKey);
             System.out.println(RSAUtil.publicKey);
-
             String str = "hello world";
             String enc = encrypt(str, RSAUtil.publicKey);
             System.out.println(enc);
