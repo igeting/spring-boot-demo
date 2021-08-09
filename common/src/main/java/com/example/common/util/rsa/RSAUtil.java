@@ -1,4 +1,4 @@
-package com.example.common.util;
+package com.example.common.util.rsa;
 
 import javax.crypto.Cipher;
 import java.security.*;

@@ -1,5 +1,6 @@
 package com.example.common.util;
 
+import com.example.common.util.rsa.RSAUtil;
 import org.junit.jupiter.api.Test;
 
 public class RSAUtilTest {
