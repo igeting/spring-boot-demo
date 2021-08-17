@@ -25,4 +25,12 @@ public class BaseResult extends Basic {
         this.message = message;
         this.data = data;
     }
+
+    public static BaseResult fail(String msg) {
+        return new BaseResult(RESULT_FAIL, msg);
+    }
+
+    public static BaseResult success(Object data) {
+        return new BaseResult(RESULT_SUCCESS, "success", data);
+    }
 }
