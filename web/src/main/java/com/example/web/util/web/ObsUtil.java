@@ -44,6 +44,12 @@ public class ObsUtil {
         return null;
     }
 
+    /**
+     * 下载文件
+     *
+     * @param fileId
+     * @return
+     */
     public byte[] downloadFile(String fileId) {
         try {
             String url = "http://www.example.com/download";
