@@ -44,4 +44,14 @@ public class ObsUtil {
         return null;
     }
 
+    public byte[] downloadFile(String fileId) {
+        try {
+            String url = "http://www.example.com/download";
+            byte[] res = new RestTemplate().getForObject(url, byte[].class);
+            return res;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
