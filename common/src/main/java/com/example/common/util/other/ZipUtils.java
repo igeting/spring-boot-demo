@@ -1,9 +1,12 @@
 package com.example.common.util.other;
 
 import java.io.*;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
 public class ZipUtils {
@@ -124,6 +127,38 @@ public class ZipUtils {
             }
         }
         return out.toByteArray();
+    }
+
+    public static void unZip(String src, String desc) throws Exception {
+        File descFile = new File(desc);
+        if (!descFile.exists()) {
+            descFile.mkdirs();
+        }
+
+        ZipFile zip = new ZipFile(new File(src), Charset.forName("GBK"));
+        for (Enumeration entries = zip.entries(); entries.hasMoreElements(); ) {
+            ZipEntry entry = (ZipEntry) entries.nextElement();
+            String entryName = entry.getName();
+            InputStream is = zip.getInputStream(entry);
+            String outPath = (desc + entryName).replaceAll("\\\\", "/");
+            File f = new File(outPath.substring(0, outPath.lastIndexOf("/")));
+            if (!f.exists()) {
+                f.mkdirs();
+            }
+
+            if (new File(outPath).isDirectory()) {
+                continue;
+            }
+
+            OutputStream os = new FileOutputStream(outPath);
+            byte[] buf = new byte[BUFFER_SIZE];
+            int len;
+            while ((len = is.read(buf)) > 0) {
+                os.write(buf, 0, len);
+            }
+            is.close();
+            os.close();
+        }
     }
 
     public static void main(String[] args) {
