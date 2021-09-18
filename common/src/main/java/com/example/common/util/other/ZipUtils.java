@@ -42,7 +42,7 @@ public class ZipUtils {
         }
     }
 
-    public static void toZip(String srcDir, OutputStream out, boolean keepDirStructure) throws RuntimeException {
+    public static void toZip(String srcDir, OutputStream out, boolean keepDirStructure) throws Exception {
         long start = System.currentTimeMillis();
         ZipOutputStream zos = null;
         try {
@@ -52,7 +52,7 @@ public class ZipUtils {
             long end = System.currentTimeMillis();
             System.out.println("zip file cost:" + (end - start) + "ms");
         } catch (Exception e) {
-            throw new RuntimeException("zip error from ZipUtils", e);
+            throw new Exception("zip error from ZipUtils", e);
         } finally {
             if (zos != null) {
                 try {
@@ -65,7 +65,7 @@ public class ZipUtils {
     }
 
 
-    public static void toZip(List<File> srcFiles, OutputStream out) throws RuntimeException {
+    public static void toZip(List<File> srcFiles, OutputStream out) throws Exception {
         long start = System.currentTimeMillis();
         ZipOutputStream zos = null;
         try {
@@ -84,7 +84,7 @@ public class ZipUtils {
             long end = System.currentTimeMillis();
             System.out.println("zip file cost:" + (end - start) + "ms");
         } catch (Exception e) {
-            throw new RuntimeException("zip error from ZipUtils", e);
+            throw new Exception("zip error from ZipUtils", e);
         } finally {
             if (zos != null) {
                 try {
@@ -96,7 +96,7 @@ public class ZipUtils {
         }
     }
 
-    public static byte[] toZip(List<File> srcFiles) throws RuntimeException {
+    public static byte[] toZip(List<File> srcFiles) throws Exception {
         long start = System.currentTimeMillis();
         ZipOutputStream zos = null;
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -116,7 +116,7 @@ public class ZipUtils {
             long end = System.currentTimeMillis();
             System.out.println("zip file cost:" + (end - start) + "ms");
         } catch (Exception e) {
-            throw new RuntimeException("zip error from ZipUtils", e);
+            throw new Exception("zip error from ZipUtils", e);
         } finally {
             if (zos != null) {
                 try {
@@ -165,12 +165,17 @@ public class ZipUtils {
         List<File> fileList = new ArrayList<>();
         fileList.add(new File("a.txt"));
         fileList.add(new File("b.txt"));
-        byte[] bytes = toZip(fileList);
+        try {
+            byte[] bytes = toZip(fileList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         OutputStream out = null;
         try {
             out = new FileOutputStream(new File("c.zip"));
             toZip(fileList, out);
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             try {
