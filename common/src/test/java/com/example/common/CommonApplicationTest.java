@@ -3,7 +3,7 @@ package com.example.common;
 import com.alibaba.fastjson.JSONObject;
 import org.junit.jupiter.api.Test;
 
-public class CommonApplicationTests {
+public class CommonApplicationTest {
 
     @Test
     public void test1() {

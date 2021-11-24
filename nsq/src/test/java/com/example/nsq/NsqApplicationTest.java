@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class NsqApplicationTests {
+public class NsqApplicationTest {
     @Autowired
     NsqPublisher publisher;
     @Autowired

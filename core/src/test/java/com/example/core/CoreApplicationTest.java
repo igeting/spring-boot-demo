@@ -23,7 +23,7 @@ import java.util.List;
 
 //@EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
 @SpringBootTest
-class CoreApplicationTests {
+class CoreApplicationTest {
     @Autowired
     private RestTemplate restTemplate;
 
