@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.*;
@@ -36,5 +37,10 @@ public class TestController {
         }
 
         return BaseResult.success(null);
+    }
+
+    @RequestMapping(value = "/home")
+    public ModelAndView home() {
+        return new ModelAndView("index");
     }
 }
