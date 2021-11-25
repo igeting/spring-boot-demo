@@ -21,7 +21,6 @@
             <optional>true</optional>
         </dependency>
 
-        <!--二维码-->
         <dependency>
             <groupId>com.google.zxing</groupId>
             <artifactId>core</artifactId>
