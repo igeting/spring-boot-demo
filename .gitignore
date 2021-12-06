@@ -1,5 +1,6 @@
-**/.classpath
+**/target
+**/.vscode
 **/.project
 **/.settings
+**/.classpath
 **/.factorypath
-**/target
