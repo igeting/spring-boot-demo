@@ -14,8 +14,8 @@
         <module>common</module>
         <module>core</module>
         <module>nsq</module>
-        <module>security</module>
         <module>web</module>
+        <module>security</module>
     </modules>
 
     <groupId>com.example</groupId>
@@ -26,8 +26,8 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <goson.version>2.8.6</goson.version>
-        <fastjson.version>1.2.70</fastjson.version>
+        <goson.version>2.8.8</goson.version>
+        <fastjson.version>1.2.78</fastjson.version>
     </properties>
 
     <dependencies>
@@ -55,19 +55,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
         </dependency>
-
-        <!--gson-->
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>${gson.version}</version>
         </dependency>
-
-        <!--fastjson-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>${fastjson.version}</version>
         </dependency>
 
     </dependencies>
@@ -75,10 +69,16 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${gson.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 

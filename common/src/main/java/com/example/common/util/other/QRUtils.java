@@ -96,7 +96,7 @@ public class QRUtils {
     }
 
     public static void main(String[] args) {
-        byte[] img = createQR("hello wold", 200, null);
+        byte[] img = createQR("hello world", 200, null);
         try {
             FileCopyUtils.copy(img, new File("test.png"));
         } catch (IOException e) {
