@@ -16,6 +16,7 @@
         <module>nsq</module>
         <module>web</module>
         <module>security</module>
+        <module>jwt</module>
     </modules>
 
     <groupId>com.example</groupId>
