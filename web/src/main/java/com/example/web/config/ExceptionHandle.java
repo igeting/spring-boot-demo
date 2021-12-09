@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class ExceptionHandle {
 
     @ExceptionHandler(value = Exception.class)
-    public BaseResult exceptionHandler(Exception e) {
+    public BaseResult exceptionHandle(Exception e) {
         log.error("ERROR:", e);
         return new BaseResult(ResultEnum.ERROR.getCode(), e.getMessage());
     }
