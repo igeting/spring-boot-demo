@@ -1,19 +1,17 @@
 package com.example.web.config;
 
 import com.example.web.entity.BaseResult;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.io.IOException;
-
+@Slf4j
 @RestControllerAdvice
-public class ExceptionConfig {
+public class ExceptionHandle {
 
     @ExceptionHandler(value = Exception.class)
     public BaseResult exceptionHandler(Exception e) {
-        if (e instanceof IOException) {
-            return new BaseResult(ResultEnum.ERROR.getCode(), e.getMessage());
-        }
+        log.error("ERROR:", e);
         return new BaseResult(ResultEnum.ERROR.getCode(), e.getMessage());
     }
 }
