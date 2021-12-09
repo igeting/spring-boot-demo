@@ -12,8 +12,8 @@ public class ExceptionConfig {
     @ExceptionHandler(value = Exception.class)
     public BaseResult exceptionHandler(Exception e) {
         if (e instanceof IOException) {
-            return new BaseResult(500, "io exception");
+            return new BaseResult(ResultEnum.ERROR.getCode(), e.getMessage());
         }
-        return new BaseResult(500, e.getMessage());
+        return new BaseResult(ResultEnum.ERROR.getCode(), e.getMessage());
     }
 }

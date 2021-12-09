@@ -1,19 +1,20 @@
 package com.example.web.entity;
 
+import com.example.web.config.ResultEnum;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class BaseResult extends Basic {
-    public static final int RESULT_FAIL = 0;
-    public static final int RESULT_SUCCESS = 1;
-
     private Integer code;
     private String message;
     private Object data;
     private Object other;
-
-    public BaseResult() {
-    }
 
     public BaseResult(Integer code, String message) {
         this.code = code;
@@ -26,11 +27,12 @@ public class BaseResult extends Basic {
         this.data = data;
     }
 
-    public static BaseResult fail(String msg) {
-        return new BaseResult(RESULT_FAIL, msg);
+    public static BaseResult error(String err) {
+        return new BaseResult(ResultEnum.ERROR.getCode(), err);
     }
 
     public static BaseResult success(Object data) {
-        return new BaseResult(RESULT_SUCCESS, "success", data);
+        return new BaseResult(ResultEnum.SUCCESS.getCode(), ResultEnum.SUCCESS.getResult(), data);
     }
 }
+
