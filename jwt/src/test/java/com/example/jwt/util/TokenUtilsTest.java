@@ -27,8 +27,8 @@ class TokenUtilsTest {
         user.setUsername("jack");
         user.setPassword("123456");
 
-        //生成token
-        String token = tokenUtils.getToken(user);
+        //生成token 有效期30m
+        String token = tokenUtils.getToken(user, 1000 * 60 * 30);
         System.out.println(token);
 
         //验证token

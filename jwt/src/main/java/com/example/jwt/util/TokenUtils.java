@@ -7,13 +7,16 @@ import com.example.jwt.entity.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 @Component
 public class TokenUtils {
     @Value(value = "${jwt.sign}")
     private String sign;
 
-    public String getToken(User user) {
+    public String getToken(User user, long expire) {
         JWTCreator.Builder builder = JWT.create();
+        builder.withExpiresAt(new Date(System.currentTimeMillis() + expire));
         builder.withAudience(user.getId());
         //String token = builder.sign(Algorithm.HMAC256(user.getPassword()));
         String token = builder.sign(Algorithm.HMAC256(sign));
