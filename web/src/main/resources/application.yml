@@ -12,3 +12,14 @@ spring:
 
 mybatis:
   mapper-locations: classpath:mapper/**/*.xml
+
+logging:
+  level:
+    root: info
+  file:
+    path: logs
+    name: ${logging.file.path}/app.log
+  logback:
+    rollingpolicy:
+      max-file-size: 100MB
+      max-history: 7
