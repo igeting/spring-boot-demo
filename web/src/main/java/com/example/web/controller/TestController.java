@@ -23,7 +23,7 @@ public class TestController {
         if (Objects.isNull(name)) {
             throw new Exception("name is empty");
         }
-        return new BaseResult(200, "success", name);
+        return BaseResult.success(name);
     }
 
     @RequestMapping(value = "/valid")
