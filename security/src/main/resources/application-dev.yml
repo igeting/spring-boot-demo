@@ -7,3 +7,14 @@ spring:
     encoding: UTF-8
     prefix: classpath:/template/
     suffix: .html
+
+logging:
+  level:
+    root: info
+  file:
+    path: log
+    name: ${logging.file.path}/app.log
+  logback:
+    rollingpolicy:
+      max-file-size: 100MB
+      max-history: 7
