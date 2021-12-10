@@ -5,7 +5,7 @@
 
     <define name="hostname" class="com.example.core.utils.HostnameProperty"/>
 
-    <property name="log_path" value="./logs"/>
+    <property name="log_path" value="./log"/>
     <!--
     %d{yyyy-MM-dd HH:mm:ss.SSS}：日志输出时间，精确到毫秒；
     %-5level：日志级别，并且使用5个字符靠左对齐；

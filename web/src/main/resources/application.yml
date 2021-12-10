@@ -17,7 +17,7 @@ logging:
   level:
     root: info
   file:
-    path: logs
+    path: log
     name: ${logging.file.path}/app.log
   logback:
     rollingpolicy:
