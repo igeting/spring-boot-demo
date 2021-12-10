@@ -18,7 +18,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         username = username.toUpperCase();
         //password
-        String password = "admin";
+        String password = "123456";
         password = new BCryptPasswordEncoder().encode(password);
 
         //role

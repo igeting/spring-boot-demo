@@ -40,8 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.headers().frameOptions().sameOrigin();
 
-        http.exceptionHandling()
-                .authenticationEntryPoint(jsonAuthenticationEntryPoint);
+        http.exceptionHandling().authenticationEntryPoint(jsonAuthenticationEntryPoint);
 
         http.formLogin()
                 .loginPage("/login")
@@ -89,13 +88,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().passwordEncoder(passwordEncoder())
                 .withUser("admin")
-                .password(passwordEncoder().encode("admin"))
+                .password(passwordEncoder().encode("123456"))
                 .roles("ADMIN");
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/css/*", "/js/*", "/img/*");
+        web.ignoring().antMatchers("/css/**", "/js/**", "/img/**");
     }
 }
