@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface UserMapper {
     List<User> getAllUsers();
+    void updataName(int id, String name);
 }

@@ -10,8 +10,17 @@
         <result property="password" column="password"/>
     </resultMap>
 
+    <sql id="UserColumn">id, username</sql>
+    <update id="updataName">
+        UPDATE user_info
+        SET username = #{name}
+        WHERE id = #{id}
+    </update>
+
     <select id="getAllUsers" resultMap="UserMap">
-        SELECT * FROM user
+        SELECT
+        <include refid="UserColumn"/>
+        FROM user_info
     </select>
 
 </mapper>
