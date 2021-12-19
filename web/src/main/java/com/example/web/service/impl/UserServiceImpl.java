@@ -10,8 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Transactional(propagation = Propagation.REQUIRED, timeout = 30, rollbackFor = Exception.class)
 @Service
+@Transactional(propagation = Propagation.REQUIRED, timeout = 30, rollbackFor = RuntimeException.class)
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
@@ -22,8 +22,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updataName(int id, String name) throws Exception{
+    public void updataName(int id, String name) throws Exception {
         userMapper.updataName(id, name);
-        throw new Exception("this is exception");
+        if (id == 1) {
+            throw new RuntimeException("this is exception");
+        }
     }
 }
