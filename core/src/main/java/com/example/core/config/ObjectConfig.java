@@ -8,7 +8,8 @@ import org.springframework.context.annotation.PropertySource;
 @Data
 @Configuration
 @ConfigurationProperties(prefix = "one")
-@PropertySource(value = {"classpath:object-config.properties"}, encoding = "UTF-8")
+//@PropertySource(value = {"classpath:object-config.properties"}, encoding = "UTF-8")
+@PropertySource(value = {"classpath:object-config.yml"}, factory = YamlConfigFactory.class, encoding = "UTF-8")
 public class ObjectConfig {
     private String id;
     private String pro1;

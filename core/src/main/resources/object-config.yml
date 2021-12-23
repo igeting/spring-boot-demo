@@ -1,0 +1,7 @@
+one:
+  id: 123
+  pro1: hello
+  pro2: world
+  user:
+    name: lulu
+    age: 18
