@@ -21,25 +21,20 @@ public class SystemConfig {
         return restTemplate;
     }
 
-    /*
-    @Bean(name = "dataSource1")
-    public DataSource dataSource1() {
-        DataSourceBuilder builder = DataSourceBuilder.create();
-        builder.driverClassName(Driver.class.getName());
-        builder.url("jdbc:postgresql://localhost:5432/test");
-        builder.username("postgres");
-        builder.password("123456");
-        return builder.build();
+    @Bean(name = "newDataSource")
+    public DataSource dataSource() {
+        //DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        //dataSource.setDriverClassName(Driver.class.getName());
+        //dataSource.setUrl("jdbc:postgresql://localhost:5432/test");
+        //dataSource.setUrl("postgres");
+        //dataSource.setPassword("123456");
+        //return dataSource;
+
+        return DataSourceBuilder.create()
+                .driverClassName(Driver.class.getName())
+                .url("jdbc:postgresql://localhost:5432/test")
+                .username("postgres")
+                .password("123456").build();
     }
 
-    @Bean(name = "dataSource2")
-    public DataSource dataSource2() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(Driver.class.getName());
-        dataSource.setUrl("jdbc:postgresql://localhost:5432/test");
-        dataSource.setUrl("postgres");
-        dataSource.setPassword("123456");
-        return dataSource;
-    }
-    */
 }
