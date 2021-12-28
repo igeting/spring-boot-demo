@@ -38,7 +38,6 @@ public class TestController {
             log.error(v.getMessage());
             return BaseResult.error(v.getMessage());
         }
-
         return BaseResult.success(null);
     }
 
