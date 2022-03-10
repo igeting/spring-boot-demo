@@ -1,4 +1,4 @@
 spring:
   profiles:
-    active: dev,nsq
+    active: ${RUN_ENV:dev,nsq}
     include: other,swagger
