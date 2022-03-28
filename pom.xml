@@ -23,6 +23,7 @@
         <module>web</module>
         <module>jwt</module>
         <module>security</module>
+        <module>mybatis</module>
     </modules>
 
     <properties>
