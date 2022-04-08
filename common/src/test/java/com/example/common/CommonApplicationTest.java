@@ -15,7 +15,7 @@ public class CommonApplicationTest {
         log.info(name);
         JSONObject obj = new JSONObject();
         obj.put("name", name);
-        while (true) {
+        for (int i = 0; i < 3; i++) {
             log.info("{}", obj);
             try {
                 Thread.sleep(1000);
