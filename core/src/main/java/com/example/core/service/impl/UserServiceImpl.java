@@ -1,6 +1,6 @@
 package com.example.core.service.impl;
 
-import com.example.core.entity.User;
+import com.example.core.entity.UserInfo;
 import com.example.core.mapper.UserMapper;
 import com.example.core.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +19,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUser(int id) {
+    public UserInfo getUser(int id) {
         return userMapper.getUser(id);
     }
 
     @Override
-    public List<User> getUsers() {
+    public List<UserInfo> getUsers() {
         return userMapper.getUsers();
     }
 }

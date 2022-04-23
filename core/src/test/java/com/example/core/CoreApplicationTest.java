@@ -1,8 +1,8 @@
 package com.example.core;
 
 import com.example.core.config.ObjectConfig;
-import com.example.core.dao.UserDao;
-import com.example.core.entity.User;
+import com.example.core.entity.UserInfo;
+import com.example.core.mapper.UserMapper;
 import com.example.core.service.UserService;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -40,9 +40,9 @@ class CoreApplicationTest {
     void TestUser() {
         int count = userService.getUserCount();
         System.out.println(count);
-        User u = userService.getUser(1);
+        UserInfo u = userService.getUser(1);
         System.out.println(u);
-        List<User> users = userService.getUsers();
+        List<UserInfo> users = userService.getUsers();
         System.out.println(users.toString());
         Gson gson = new Gson();
         String str = gson.toJson(users);
@@ -54,21 +54,21 @@ class CoreApplicationTest {
 
     @Test
     void TestGson() {
-        User user = new User();
+        UserInfo user = new UserInfo();
         user.setUsername("jack");
         user.setPassword("123456");
         System.out.println(gson.toJson(user));
 
-        List<User> list = new ArrayList<>();
+        List<UserInfo> list = new ArrayList<>();
         list.add(user);
         list.add(user);
         list.add(user);
         System.out.println(gson.toJson(list));
 
-        User u = gson.fromJson("{\"name\":\"jack\",\"pass\":\"123456\"}", User.class);
+        UserInfo u = gson.fromJson("{\"name\":\"jack\",\"pass\":\"123456\"}", UserInfo.class);
         System.out.println(u.toString());
-        List<User> us = gson.fromJson("[{\"name\":\"jack\",\"pass\":\"123456\"},{\"name\":\"jack\",\"pass\":\"123456\"},{\"name\":\"jack\",\"pass\":\"123456\"}]",
-                new TypeToken<List<User>>() {
+        List<UserInfo> us = gson.fromJson("[{\"name\":\"jack\",\"pass\":\"123456\"},{\"name\":\"jack\",\"pass\":\"123456\"},{\"name\":\"jack\",\"pass\":\"123456\"}]",
+                new TypeToken<List<UserInfo>>() {
                 }.getType());
         System.out.println(us.toString());
     }
@@ -97,16 +97,16 @@ class CoreApplicationTest {
     }
 
     @Autowired
-    UserDao userDao;
+    UserMapper userMapper;
 
     @Test
     void TestDao() {
         /*User u = new User();
         u.setUsername("test");
         u.setPassword("123456");
-        User save = userDao.save(u);
+        User save = userMapper.save(u);
         System.out.println(save.toString());*/
-        List<User> list = userDao.allUsers();
+        List<UserInfo> list = userMapper.allUsers();
         System.out.println(list);
     }
 
@@ -117,7 +117,7 @@ class CoreApplicationTest {
     void TestEntityManager() {
         String sql = "select * from user";
         Query query = entityManager.createNativeQuery(sql);
-        List<User> result = query.getResultList();
+        List<UserInfo> result = query.getResultList();
         System.out.println(gson.toJson(result));
     }
 

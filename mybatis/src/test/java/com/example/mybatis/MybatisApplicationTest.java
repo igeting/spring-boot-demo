@@ -1,6 +1,6 @@
 package com.example.mybatis;
 
-import com.example.mybatis.entity.User;
+import com.example.mybatis.entity.UserInfo;
 import com.example.mybatis.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ public class MybatisApplicationTest {
 
     @Test
     public void TestMybatis() {
-        List<User> users = userService.selectList();
+        List<UserInfo> users = userService.selectList();
         users.forEach(System.out::println);
     }
 }
