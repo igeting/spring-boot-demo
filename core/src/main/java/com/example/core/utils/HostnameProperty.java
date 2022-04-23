@@ -12,6 +12,6 @@ public class HostnameProperty extends PropertyDefinerBase {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "localhost";
+        return "127.0.0.1";
     }
 }
