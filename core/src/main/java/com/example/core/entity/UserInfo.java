@@ -1,13 +1,14 @@
 package com.example.core.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
 import javax.persistence.*;
 
-@Data
 @Entity
 @Table(name = "user_info")
+@Data
 public class UserInfo {
     @Id
     @Column(name = "id")
@@ -21,4 +22,7 @@ public class UserInfo {
     @Column(name = "password")
     @SerializedName(value = "pass")
     private String password;
+
+    @JsonFormat
+    private Object other;
 }
