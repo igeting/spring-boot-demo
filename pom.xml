@@ -24,6 +24,7 @@
         <module>jwt</module>
         <module>security</module>
         <module>mybatis</module>
+        <module>jpa</module>
     </modules>
 
     <properties>
