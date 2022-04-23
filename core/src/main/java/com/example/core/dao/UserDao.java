@@ -18,7 +18,10 @@ import java.util.List;
  * User 当前映射的实体
  * Integer 当前实体主键类型
  */
-public interface UserDao extends JpaRepository<User, Integer> {
+public interface UserDao extends JpaRepository<User, Long> {
     @Query(value = "select * from user", nativeQuery = true)
     List<User> allUsers();
+
+    @Query(value = "select * from user where username = ?", nativeQuery = true)
+    List<User> getByName(String name);
 }
