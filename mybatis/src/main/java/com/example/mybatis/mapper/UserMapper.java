@@ -3,10 +3,11 @@ package com.example.mybatis.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.example.mybatis.entity.UserInfo;
 import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-//@Mapper
+@Repository
 public interface UserMapper extends BaseMapper<UserInfo> {
     @Select(value = "select * from user_info where username = #{name}")
     List<UserInfo> getUsers(String name);
