@@ -1,6 +1,6 @@
 package com.example.web.service.impl;
 
-import com.example.web.entity.User;
+import com.example.web.entity.UserInfo;
 import com.example.web.mapper.UserMapper;
 import com.example.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public List<User> getAllUsers() {
+    public List<UserInfo> getAllUsers() {
         return userMapper.getAllUsers();
     }
 

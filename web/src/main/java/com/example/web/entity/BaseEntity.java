@@ -10,9 +10,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class BaseParam implements Serializable {
-    private static final long serialVersionUID = 1L;
-
+public class BaseEntity implements Serializable {
     private Long id;
     private Date createdAt;
     private Date updatedAt;

@@ -1,7 +1,7 @@
 package com.example.web.controller;
 
 import com.example.web.entity.BaseResult;
-import com.example.web.entity.User;
+import com.example.web.entity.UserInfo;
 import com.example.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -21,7 +21,7 @@ public class UserController {
 
     @GetMapping(value = "/getAllUsers")
     public BaseResult getAllUsers() {
-        List<User> allUsers = userService.getAllUsers();
+        List<UserInfo> allUsers = userService.getAllUsers();
         return BaseResult.success(allUsers);
     }
 
@@ -33,6 +33,6 @@ public class UserController {
             userService.updataName(Integer.valueOf(id), name);
             return BaseResult.success(null);
         }
-        return BaseResult.error("param error");
+        return BaseResult.fail("param error");
     }
 }
