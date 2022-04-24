@@ -25,6 +25,7 @@
         <module>jwt</module>
         <module>security</module>
         <module>mybatis</module>
+        <module>redis</module>
     </modules>
 
     <properties>
