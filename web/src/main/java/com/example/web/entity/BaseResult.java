@@ -6,33 +6,37 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class BaseResult extends Basic {
-    private Integer code;
+public class BaseResult implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private String message;
+    private int code;
     private Object data;
-    private Object other;
-
-    public BaseResult(Integer code, String message) {
-        this.code = code;
-        this.message = message;
-    }
-
-    public BaseResult(Integer code, String message, Object data) {
-        this.code = code;
-        this.message = message;
-        this.data = data;
-    }
-
-    public static BaseResult error(String err) {
-        return new BaseResult(ResultEnum.ERROR.getCode(), err);
-    }
 
     public static BaseResult success(Object data) {
-        return new BaseResult(ResultEnum.SUCCESS.getCode(), ResultEnum.SUCCESS.getResult(), data);
+        return new BaseResult("success", ResultEnum.SUCCESS.getCode(), data);
+    }
+
+    public static BaseResult success(Object data, String message) {
+        return new BaseResult(message, ResultEnum.SUCCESS.getCode(), data);
+    }
+
+    public static BaseResult success(Object data, String message, int code) {
+        return new BaseResult(message, code, data);
+    }
+
+    public static BaseResult fail(String message) {
+        return new BaseResult(message, ResultEnum.FAIL.getCode(), null);
+    }
+
+    public static BaseResult fail(String message, int code) {
+        return new BaseResult(message, code, null);
     }
 }
 

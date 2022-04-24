@@ -36,7 +36,7 @@ public class TestController {
         Set<ConstraintViolation<WebParam>> validates = validator.validate(webParam);
         for (ConstraintViolation<WebParam> v : validates) {
             log.error(v.getMessage());
-            return BaseResult.error(v.getMessage());
+            return BaseResult.fail(v.getMessage());
         }
         return BaseResult.success(null);
     }
