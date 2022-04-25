@@ -1,4 +1,4 @@
-package com.example.core.config;
+package com.example.web.config;
 
 import com.google.gson.GsonBuilder;
 import org.springframework.boot.autoconfigure.http.HttpMessageConverters;

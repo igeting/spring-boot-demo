@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @Slf4j
 @RestControllerAdvice
-public class ExceptionHandle {
+public class GlobalExceptionHandle {
 
     @ExceptionHandler(value = Exception.class)
     public BaseResult exceptionHandle(Exception e) {
-        log.error("ERROR:", e);
-        return new BaseResult(ResultEnum.ERROR.getCode(), e.getMessage());
+        log.error("ExceptionHandle:{}", e.getMessage(), e);
+        return BaseResult.fail(e.getMessage(), ResultEnum.FAIL.getCode());
     }
 }
