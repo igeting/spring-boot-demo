@@ -1,18 +1,19 @@
 package com.example.web.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
 @Data
 @JsonInclude(value = JsonInclude.Include.NON_EMPTY)
-public class UserInfo {
-    @JsonProperty(value = "id")
-    private int id;
+public class UserInfo extends BaseEntity {
 
-    @JsonProperty(value = "username")
+    @TableField(value = "username")
+    @SerializedName(value = "username")
     private String username;
 
-    @JsonProperty(value = "password")
+    @TableField(value = "password")
+    @SerializedName(value = "password")
     private String password;
 }
