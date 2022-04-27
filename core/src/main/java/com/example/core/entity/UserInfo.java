@@ -1,6 +1,5 @@
 package com.example.core.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
@@ -22,7 +21,4 @@ public class UserInfo {
     @Column(name = "password")
     @SerializedName(value = "pass")
     private String password;
-
-    @JsonFormat
-    private Object other;
 }
