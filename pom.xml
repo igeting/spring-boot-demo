@@ -26,6 +26,7 @@
         <module>security</module>
         <module>mybatis</module>
         <module>redis</module>
+        <module>swagger</module>
     </modules>
 
     <properties>
