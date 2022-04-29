@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 
-@Api(tags = "user controller")
+@Api(tags = "user interface")
 @RequestMapping(value = "/user")
 @RestController
 public class UserController {
