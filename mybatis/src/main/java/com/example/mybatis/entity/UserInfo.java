@@ -7,11 +7,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@TableName(value = "user_info")
+@TableName(value = "${prefix}user_info")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserInfo extends BaseEntity {
+public class UserInfo extends BaseModel {
 
     @JsonProperty(value = "username")
     @TableField(value = "username")

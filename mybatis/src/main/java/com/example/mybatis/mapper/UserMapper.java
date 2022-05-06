@@ -9,16 +9,16 @@ import java.util.List;
 
 @Repository
 public interface UserMapper extends BaseMapper<UserInfo> {
-    @Select(value = "select * from user_info where username = #{name}")
+    @Select(value = "select * from ${prefix}user_info where username = #{name}")
     List<UserInfo> getUsers(String name);
 
-    @Update(value = "update user_info set username = #{name} where id = #{id}")
+    @Update(value = "update ${prefix}user_info set username = #{name} where id = #{id}")
     int updateUser(@Param("id") String id, @Param("name") String username);
 
-    @Insert(value = "insert into user_info (`username`,`password`) values(#{username}, #{password})")
+    @Insert(value = "insert into ${prefix}user_info (`username`,`password`) values(#{username}, #{password})")
     int addUser(UserInfo info);
 
-    @Delete(value = "delete from user_info where username = #{name}")
+    @Delete(value = "delete from ${prefix}user_info where username = #{name}")
     int delUser(String name);
 
     UserInfo findUser(long id);

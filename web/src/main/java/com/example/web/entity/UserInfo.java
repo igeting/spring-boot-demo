@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @JsonInclude(value = JsonInclude.Include.NON_EMPTY)
-public class UserInfo extends BaseEntity {
+public class UserInfo extends BaseModel {
 
     @TableField(value = "username")
     @SerializedName(value = "username")

@@ -4,11 +4,3 @@ spring:
     url: jdbc:postgresql://127.0.0.1:5432/test?useSSL=false
     username: postgres
     password: 123456
-
-mybatis-plus:
-  mapper-locations: classpath:/mapper/*.xml
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-  global-config:
-    db-config:
-      table-prefix: test_

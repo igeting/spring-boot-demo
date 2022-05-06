@@ -15,7 +15,7 @@ import java.util.Date;
 @MappedSuperclass
 @EntityListeners(value = {AuditingEntityListener.class})
 @Data
-public class BaseEntity implements Serializable {
+public class BaseModel implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
