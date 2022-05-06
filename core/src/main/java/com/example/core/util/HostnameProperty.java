@@ -1,4 +1,4 @@
-package com.example.core.utils;
+package com.example.core.util;
 
 import ch.qos.logback.core.PropertyDefinerBase;
 

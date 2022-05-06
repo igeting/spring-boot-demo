@@ -3,7 +3,7 @@
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
     <contextName>logback</contextName>
 
-    <define name="hostname" class="com.example.core.utils.HostnameProperty"/>
+    <define name="hostname" class="com.example.core.util.HostnameProperty"/>
 
     <property name="log_path" value="./log"/>
     <!--
