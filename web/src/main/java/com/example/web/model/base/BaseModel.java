@@ -33,7 +33,9 @@ public class BaseModel implements Serializable {
     @SerializedName(value = "updated_by")
     private String updatedBy;
 
+    /*
     @Version
     @SerializedName(value = "version")
     private Long version;
+    */
 }

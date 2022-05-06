@@ -12,7 +12,6 @@ public class ExceptionHandle {
 
     @ExceptionHandler(value = Exception.class)
     public BaseResult exceptionHandle(Exception e, BindingResult bindingResult) {
-        //拦截所有验证
         if (bindingResult.hasErrors()) {
             return BaseResult.fail(bindingResult.getFieldError().getDefaultMessage(), ResultEnum.FAIL.getCode());
         }

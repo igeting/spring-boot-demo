@@ -1,11 +1,10 @@
-package com.example.web.dto;
+package com.example.web.vo;
 
 
 import lombok.Data;
 
 @Data
-public class UserDTO {
+public class UserVO {
     private Long id;
     private String username;
-    private String password;
 }

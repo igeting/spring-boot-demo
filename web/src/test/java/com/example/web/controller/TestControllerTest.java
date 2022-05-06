@@ -1,6 +1,8 @@
 package com.example.web.controller;
 
+import com.example.web.dto.UserDTO;
 import com.example.web.service.UserService;
+import com.example.web.vo.UserVO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -52,7 +54,10 @@ class TestControllerTest {
     }
 
     @Test
-    void updateNameTest() throws Exception {
-        userService.updataName(1, "test");
+    void updateNameTest() {
+        UserDTO user = new UserDTO();
+        user.setId(1l);
+        user.setUsername("lulu");
+        userService.updateUser(user);
     }
 }

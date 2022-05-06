@@ -1,36 +1,39 @@
 package com.example.web.controller;
 
-import com.example.web.model.base.BaseResult;
+import com.example.web.dto.UserDTO;
 import com.example.web.model.UserInfo;
+import com.example.web.model.base.BaseResult;
 import com.example.web.service.UserService;
+import com.example.web.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/api/v1")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @GetMapping(value = "/getAllUsers")
-    public BaseResult getAllUsers() {
-        List<UserInfo> allUsers = userService.getAllUsers();
+    @GetMapping(value = "/user")
+    public BaseResult getUsers() {
+        List<UserVO> allUsers = userService.getUsers();
         return BaseResult.success(allUsers);
     }
 
-    @GetMapping(value = "/updateName")
-    public BaseResult updateName(HttpServletRequest request) throws Exception {
-        String id = request.getParameter("id");
-        String name = request.getParameter("name");
-        if (StringUtils.hasLength(id) && StringUtils.hasLength(name)) {
-            userService.updataName(Integer.valueOf(id), name);
+    @GetMapping(value = "/user/{id}")
+    public BaseResult getUser(@PathVariable(value = "id") Long id) {
+        UserVO user = userService.getUser(id);
+        return BaseResult.success(user);
+    }
+
+    @PutMapping(value = "/user")
+    public BaseResult updateUser(@RequestBody UserDTO dto) {
+        if (Objects.nonNull(dto) && Objects.nonNull(dto.getId())) {
+            userService.updateUser(dto);
             return BaseResult.success(null);
         }
         return BaseResult.fail("param error");

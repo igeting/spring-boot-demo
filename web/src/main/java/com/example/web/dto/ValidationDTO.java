@@ -1,4 +1,4 @@
-package com.example.web.model;
+package com.example.web.dto;
 
 import lombok.Data;
 
@@ -7,7 +7,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 @Data
-public class ValidationInfo {
+public class ValidationDTO {
 
     @NotNull(message = "username not empty")
     private String username;
