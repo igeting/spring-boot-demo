@@ -2,8 +2,10 @@ package com.example.web.dto;
 
 
 import com.example.web.entity.UserInfo;
+import lombok.Data;
 import org.springframework.beans.BeanUtils;
 
+@Data
 public class UserDTO implements Converter<UserDTO, UserInfo> {
     private String username;
     private String password;
