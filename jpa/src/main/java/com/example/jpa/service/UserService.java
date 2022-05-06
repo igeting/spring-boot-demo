@@ -1,7 +1,7 @@
 package com.example.jpa.service;
 
 import com.example.jpa.dao.UserDao;
-import com.example.jpa.entity.UserInfo;
+import com.example.jpa.model.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,6 +1,6 @@
 package com.example.core.service.impl;
 
-import com.example.core.entity.base.BaseResult;
+import com.example.core.model.base.BaseResult;
 import com.example.core.service.FileService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

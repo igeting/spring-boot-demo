@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.core.mapper.UserMapper">
-    <resultMap id="UserMap" type="com.example.core.entity.UserInfo">
+    <resultMap id="UserMap" type="com.example.core.model.UserInfo">
         <id property="id" column="id"/>
         <result property="username" column="username"/>
         <result property="password" column="password"/>
@@ -17,7 +17,7 @@
         where id = #{id};
     </select>
 
-    <select id="getUsers" resultType="com.example.core.entity.UserInfo">
+    <select id="getUsers" resultType="com.example.core.model.UserInfo">
         select * from user;
     </select>
 </mapper>

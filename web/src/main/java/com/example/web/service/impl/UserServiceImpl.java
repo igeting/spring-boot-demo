@@ -1,6 +1,6 @@
 package com.example.web.service.impl;
 
-import com.example.web.entity.UserInfo;
+import com.example.web.model.UserInfo;
 import com.example.web.mapper.UserMapper;
 import com.example.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

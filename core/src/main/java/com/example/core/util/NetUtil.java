@@ -31,7 +31,7 @@ public class NetUtil {
                     ipAddress = inet.getHostAddress();
                 }
             }
-            if (ipAddress != null && ipAddress.length() > 15) { // "***.***.***.***".length() = 15
+            if (ipAddress != null && ipAddress.length() > 15) { //"***.***.***.***".length() = 15
                 if (ipAddress.indexOf(",") > 0) {
                     ipAddress = ipAddress.substring(0, ipAddress.indexOf(","));
                 }

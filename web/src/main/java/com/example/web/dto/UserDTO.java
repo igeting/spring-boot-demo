@@ -1,7 +1,7 @@
 package com.example.web.dto;
 
 
-import com.example.web.entity.UserInfo;
+import com.example.web.model.UserInfo;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
 

@@ -1,5 +1,6 @@
 package com.example.web.util.web;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -8,7 +9,10 @@ import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
+@Slf4j
 public class ObsUtil {
+
+    private RestTemplate restTemplate = new RestTemplate();
 
     /**
      * 演示上传表单文件，文件可以从文件流中获取，也可以读取本地文件
@@ -36,10 +40,10 @@ public class ObsUtil {
             params.put("file", files);
 
             String url = "http://www.example.com/upload";
-            String s = new RestTemplate().postForObject(url, params, String.class);
-            return s;
+            String res = restTemplate.postForObject(url, params, String.class);
+            return res;
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("uploadFile error:{}", e.getMessage(), e);
         }
         return null;
     }
@@ -53,10 +57,10 @@ public class ObsUtil {
     public byte[] downloadFile(String fileId) {
         try {
             String url = "http://www.example.com/download";
-            byte[] res = new RestTemplate().getForObject(url, byte[].class);
+            byte[] res = restTemplate.getForObject(url, byte[].class);
             return res;
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("uploadFile error:{}", e.getMessage(), e);
         }
         return null;
     }

@@ -1,6 +1,6 @@
 package com.example.core.config;
 
-import com.example.core.entity.base.WebResult;
+import com.example.core.model.base.WebResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

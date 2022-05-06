@@ -1,8 +1,8 @@
 package com.example.web.controller;
 
 import com.example.web.config.ResultEnum;
-import com.example.web.entity.BaseResult;
-import com.example.web.entity.ValidationInfo;
+import com.example.web.model.base.BaseResult;
+import com.example.web.model.ValidationInfo;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;

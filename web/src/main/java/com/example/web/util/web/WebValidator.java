@@ -1,6 +1,6 @@
 package com.example.web.util.web;
 
-import com.example.web.entity.WebParam;
+import com.example.web.model.base.WebParam;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.validation.ConstraintViolation;

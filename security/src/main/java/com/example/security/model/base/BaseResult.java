@@ -1,4 +1,4 @@
-package com.example.security.entity.base;
+package com.example.security.model.base;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

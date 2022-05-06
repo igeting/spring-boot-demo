@@ -1,7 +1,7 @@
 package com.example.core;
 
 import com.example.core.config.ObjectConfig;
-import com.example.core.entity.UserInfo;
+import com.example.core.model.UserInfo;
 import com.example.core.mapper.UserMapper;
 import com.example.core.service.UserService;
 import com.google.gson.Gson;

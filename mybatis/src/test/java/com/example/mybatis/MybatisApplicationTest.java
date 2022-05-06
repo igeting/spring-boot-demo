@@ -1,6 +1,6 @@
 package com.example.mybatis;
 
-import com.example.mybatis.entity.UserInfo;
+import com.example.mybatis.model.UserInfo;
 import com.example.mybatis.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

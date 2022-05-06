@@ -1,6 +1,6 @@
 package com.example.core.mapper;
 
-import com.example.core.entity.UserInfo;
+import com.example.core.model.UserInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

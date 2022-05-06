@@ -1,5 +1,6 @@
-package com.example.web.entity;
+package com.example.web.model.base;
 
+import com.example.web.model.base.BaseModel;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;

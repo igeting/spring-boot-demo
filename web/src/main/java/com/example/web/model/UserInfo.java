@@ -1,6 +1,7 @@
-package com.example.web.entity;
+package com.example.web.model;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.example.web.model.base.BaseModel;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;

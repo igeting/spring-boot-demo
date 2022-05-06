@@ -1,7 +1,7 @@
 package com.example.web.controller;
 
-import com.example.web.entity.BaseResult;
-import com.example.web.entity.UserInfo;
+import com.example.web.model.base.BaseResult;
+import com.example.web.model.UserInfo;
 import com.example.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;

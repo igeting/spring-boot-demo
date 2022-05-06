@@ -1,6 +1,6 @@
 package com.example.web.service;
 
-import com.example.web.entity.UserInfo;
+import com.example.web.model.UserInfo;
 
 import java.util.List;
 

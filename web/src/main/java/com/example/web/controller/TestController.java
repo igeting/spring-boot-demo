@@ -1,7 +1,7 @@
 package com.example.web.controller;
 
-import com.example.web.entity.BaseResult;
-import com.example.web.entity.WebParam;
+import com.example.web.model.base.BaseResult;
+import com.example.web.model.base.WebParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,4 +1,4 @@
-package com.example.jpa.entity;
+package com.example.jpa.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;

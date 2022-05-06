@@ -1,4 +1,4 @@
-package com.example.web.entity;
+package com.example.web.model.base;
 
 import com.baomidou.mybatisplus.annotation.*;
 import com.google.gson.annotations.SerializedName;

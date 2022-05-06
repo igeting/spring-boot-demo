@@ -1,6 +1,6 @@
 package com.example.jpa.controller;
 
-import com.example.jpa.entity.UserInfo;
+import com.example.jpa.model.UserInfo;
 import com.example.jpa.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

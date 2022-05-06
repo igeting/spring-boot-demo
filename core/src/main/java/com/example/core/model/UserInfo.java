@@ -1,4 +1,4 @@
-package com.example.core.entity;
+package com.example.core.model;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
