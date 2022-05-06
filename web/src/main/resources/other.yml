@@ -1,3 +1,5 @@
 test:
   name: lulu
   age: 18
+  other:
+    address: xxx
