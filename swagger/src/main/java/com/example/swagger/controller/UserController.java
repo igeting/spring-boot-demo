@@ -6,30 +6,30 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 
-@Api(tags = "user interface")
+@Api(tags = "user api")
 @RequestMapping(value = "/user")
 @RestController
 public class UserController {
 
-    @ApiOperation(value = "add user interface")
+    @ApiOperation(value = "add user")
     @PostMapping(value = "/user")
     public UserDTO addUser() {
         return new UserDTO();
     }
 
-    @ApiOperation(value = "del user interface")
+    @ApiOperation(value = "del user")
     @DeleteMapping(value = "/user")
     public UserDTO delUser(@RequestBody UserDTO user) {
         return user;
     }
 
-    @ApiOperation(value = "mod user interface")
+    @ApiOperation(value = "mod user")
     @PutMapping(value = "/user")
     public UserDTO modUser(@RequestBody UserDTO user) {
         return user;
     }
 
-    @ApiOperation(value = "get user interface")
+    @ApiOperation(value = "get user")
     @GetMapping(value = "/user")
     public UserDTO getUser() {
         return new UserDTO();

@@ -20,9 +20,8 @@ import java.util.List;
 public class SwaggerConfig {
 
     private ApiInfo info() {
-        ApiInfo info = new ApiInfoBuilder().title("swagger doc")
-                .description("swagger config")
-                .termsOfServiceUrl("http://www.baidu.com")
+        ApiInfo info = new ApiInfoBuilder().title("swagger")
+                .description("api document")
                 .version("v1.0.0")
                 .build();
         return info;
@@ -30,11 +29,12 @@ public class SwaggerConfig {
 
     private List<RequestParameter> parameters() {
         List<RequestParameter> parameters = new ArrayList<>();
-        RequestParameter parameter = new RequestParameterBuilder().name("name")
+        RequestParameter token = new RequestParameterBuilder().name("token")
                 .in(ParameterType.HEADER)
-                .example(new ExampleBuilder().value("swagger").build())
+                .example(new ExampleBuilder().value("token").build())
                 .build();
-        parameters.add(parameter);
+
+        parameters.add(token);
         return parameters;
     }
 
