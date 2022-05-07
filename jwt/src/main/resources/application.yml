@@ -1,2 +1,3 @@
 jwt:
-  sign: sign001
+  algorithm: sign001
+  expire: 30

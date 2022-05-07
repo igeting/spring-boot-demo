@@ -1,9 +1,10 @@
 package com.example.jwt.config;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.JWTVerifier;
-import com.auth0.jwt.algorithms.Algorithm;
+import com.example.jwt.util.JwtUtil;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -12,12 +13,14 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
-public class AuthenticationInterceptor implements HandlerInterceptor {
+public class AuthInterceptor implements HandlerInterceptor {
 
-    @Value(value = "${jwt.sign}")
-    private String sign;
+    @Value(value = "${jwt.algorithm}")
+    private String algorithm;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -33,22 +36,25 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 return true;
             }
         }
-
         if (method.isAnnotationPresent(NeedToken.class)) {
             NeedToken needToken = method.getAnnotation(NeedToken.class);
             if (needToken.required()) {
                 if (token == null) {
                     throw new RuntimeException("token invalid");
                 }
-                JWTVerifier build = JWT.require(Algorithm.HMAC256(sign)).build();
-                try {
-                    build.verify(token);
-                } catch (Exception e) {
-                    throw new RuntimeException("token invalid");
+                boolean isAuth = JwtUtil.verify(token);
+                if (isAuth) {
+                    return true;
                 }
-                return true;
             }
         }
+
+        response.setStatus(HttpStatus.UNAUTHORIZED.value());
+        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        Map<String, Object> map = new HashMap<>();
+        map.put("message", HttpStatus.UNAUTHORIZED.getReasonPhrase());
+        map.put("code", HttpStatus.UNAUTHORIZED.value());
+        response.getWriter().write(new Gson().toJson(map));
         return false;
     }
 
