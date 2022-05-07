@@ -9,35 +9,31 @@ import java.util.List;
 public class BeanUtil {
     private static Mapper mapper = new DozerBeanMapper();
 
-    public static <D, E> E convertBean(D t, Class<E> clazz) {
-        if (t == null) {
+    public static <D, E> E trans(D d, Class<E> clazz) {
+        if (d == null) {
             return null;
         }
-        return mapper.map(t, clazz);
+        return mapper.map(d, clazz);
     }
 
-    public static <D, E> List<E> convertArray(D[] ts, Class<E> clazz) {
+    public static <D, E> List<E> transArray(D[] ds, Class<E> clazz) {
         List<E> es = new ArrayList<>();
-        if (ts == null) {
-            return es;
-        }
-        for (D d : ts) {
-            E e = (E) convertBean(d, clazz);
-            if (e != null)
+        for (D d : ds) {
+            E e = trans(d, clazz);
+            if (e != null) {
                 es.add(e);
+            }
         }
         return es;
     }
 
-    public static <D, E> List<E> convertList(List<D> ts, Class<E> clazz) {
+    public static <D, E> List<E> transList(List<D> ds, Class<E> clazz) {
         List<E> es = new ArrayList<>();
-        if (ts == null) {
-            return es;
-        }
-        for (D d : ts) {
-            E e = (E) convertBean(d, clazz);
-            if (e != null)
+        for (D d : ds) {
+            E e = trans(d, clazz);
+            if (e != null) {
                 es.add(e);
+            }
         }
         return es;
     }

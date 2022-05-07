@@ -19,15 +19,15 @@ public class UserService {
     private UserMapper userMapper;
 
     public List<UserVO> getUsers() {
-        return BeanUtil.convertList(userMapper.getUsers(), UserVO.class);
+        return BeanUtil.transList(userMapper.getUsers(), UserVO.class);
     }
 
     public UserVO getUser(Long id) {
-        return BeanUtil.convertBean(userMapper.getUser(id), UserVO.class);
+        return BeanUtil.trans(userMapper.getUser(id), UserVO.class);
     }
 
     public void updateUser(UserDTO dto) {
-        UserInfo info = BeanUtil.convertBean(dto, UserInfo.class);
+        UserInfo info = BeanUtil.trans(dto, UserInfo.class);
         int count = userMapper.updateUser(info);
         if (count == 0) {
             throw new RuntimeException("update exception");
