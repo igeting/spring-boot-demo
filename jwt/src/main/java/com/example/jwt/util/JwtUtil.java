@@ -50,4 +50,15 @@ public class JwtUtil {
         return false;
     }
 
+    public static String id(String token) {
+        try {
+            return JWT.require(Algorithm.HMAC256(algorithm)).build()
+                    .verify(token)
+                    .getAudience()
+                    .get(0);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
