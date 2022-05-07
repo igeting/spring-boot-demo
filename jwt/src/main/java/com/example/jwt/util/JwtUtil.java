@@ -13,12 +13,12 @@ public class JwtUtil {
     private static String algorithm;
     private static int expire;
 
-    @Value("${jwt.algorithm}")
+    @Value("${core.jwt.algorithm}")
     public void setAlgorithm(String algorithm) {
         JwtUtil.algorithm = algorithm;
     }
 
-    @Value("${jwt.expire}")
+    @Value("${core.jwt.expire}")
     public void setExpire(int expire) {
         JwtUtil.expire = expire;
     }

@@ -8,5 +8,5 @@ import java.lang.annotation.Target;
 @Target(value = {ElementType.METHOD, ElementType.TYPE})
 @Retention(value = RetentionPolicy.RUNTIME)
 public @interface PassToken {
-    boolean required() default true;
+    boolean value() default true;
 }

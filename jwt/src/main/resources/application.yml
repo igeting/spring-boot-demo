@@ -1,3 +1,4 @@
-jwt:
-  algorithm: sign001
-  expire: 30
+core:
+  jwt:
+    algorithm: xxx
+    expire: 30

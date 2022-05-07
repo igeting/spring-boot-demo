@@ -2,7 +2,6 @@ package com.example.jwt.config;
 
 import com.example.jwt.util.JwtUtil;
 import com.google.gson.Gson;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -19,33 +18,34 @@ import java.util.Map;
 @Component
 public class AuthInterceptor implements HandlerInterceptor {
 
-    @Value(value = "${jwt.algorithm}")
-    private String algorithm;
-
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String token = request.getHeader("token");
         if (!(handler instanceof HandlerMethod)) {
             return true;
         }
+
+        String token = request.getHeader("token");
         HandlerMethod handlerMethod = (HandlerMethod) handler;
         Method method = handlerMethod.getMethod();
+
         if (method.isAnnotationPresent(PassToken.class)) {
             PassToken passToken = method.getAnnotation(PassToken.class);
-            if (passToken.required()) {
+            if (passToken.value()) {
                 return true;
             }
         }
+
         if (method.isAnnotationPresent(NeedToken.class)) {
             NeedToken needToken = method.getAnnotation(NeedToken.class);
-            if (needToken.required()) {
-                if (token == null) {
-                    throw new RuntimeException("token invalid");
-                }
-                boolean isAuth = JwtUtil.verify(token);
-                if (isAuth) {
-                    return true;
-                }
+            if (!needToken.value()) {
+                return true;
+            }
+            if (token == null) {
+                throw new RuntimeException("token invalid");
+            }
+            boolean isAuth = JwtUtil.verify(token);
+            if (isAuth) {
+                return true;
             }
         }
 
