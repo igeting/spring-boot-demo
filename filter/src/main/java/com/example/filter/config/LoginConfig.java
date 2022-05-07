@@ -15,9 +15,12 @@ public class LoginConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         InterceptorRegistration interceptor = registry.addInterceptor(new LoginInterceptor());
         interceptor.addPathPatterns("/**");
-        interceptor.excludePathPatterns("/login");
+        interceptor.excludePathPatterns("/**/login");
         interceptor.excludePathPatterns("/**/*.html");
         interceptor.excludePathPatterns("/**/*.js");
         interceptor.excludePathPatterns("/**/*.css");
+        interceptor.excludePathPatterns("/swagger-ui/**");
+        interceptor.excludePathPatterns("/swagger-resources/**");
+        interceptor.excludePathPatterns("/v3/**");
     }
 }
