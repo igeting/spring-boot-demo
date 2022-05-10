@@ -1,7 +1,6 @@
 package com.example.web.controller;
 
-import com.example.web.dto.UserDTO;
-import com.example.web.model.UserInfo;
+import com.example.web.to.UserTO;
 import com.example.web.model.base.BaseResult;
 import com.example.web.service.UserService;
 import com.example.web.vo.UserVO;
@@ -12,7 +11,7 @@ import java.util.List;
 import java.util.Objects;
 
 @RestController
-@RequestMapping(value = "/api/v1")
+@RequestMapping(value = "/api/${app.version}")
 public class UserController {
 
     @Autowired
@@ -30,10 +29,10 @@ public class UserController {
         return BaseResult.success(user);
     }
 
-    @PutMapping(value = "/user")
-    public BaseResult updateUser(@RequestBody UserDTO dto) {
-        if (Objects.nonNull(dto) && Objects.nonNull(dto.getId())) {
-            userService.updateUser(dto);
+    @PutMapping(value = "/user/{id}")
+    public BaseResult updateUser(@PathVariable(value = "id") Long id, @RequestBody UserTO dto) {
+        if (Objects.nonNull(dto)) {
+            userService.modUser(id, dto);
             return BaseResult.success(null);
         }
         return BaseResult.fail("param error");

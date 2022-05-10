@@ -7,7 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@TableName(value = "${prefix}user_info")
+@TableName(value = "user_info", keepGlobalPrefix = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

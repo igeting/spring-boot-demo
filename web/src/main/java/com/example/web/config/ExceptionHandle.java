@@ -21,4 +21,9 @@ public class ExceptionHandle {
     public BaseResult exceptionHandle(Exception e) {
         return BaseResult.fail(e.getMessage(), ResultEnum.FAIL.getCode());
     }
+
+    @ExceptionHandler(value = Error.class)
+    public BaseResult exceptionHandle(Error e) {
+        return BaseResult.fail(e.getMessage(), ResultEnum.FAIL.getCode());
+    }
 }

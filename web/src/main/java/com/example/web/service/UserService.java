@@ -1,6 +1,6 @@
 package com.example.web.service;
 
-import com.example.web.dto.UserDTO;
+import com.example.web.to.UserTO;
 import com.example.web.model.UserInfo;
 import com.example.web.mapper.UserMapper;
 import com.example.web.util.BeanUtil;
@@ -26,8 +26,9 @@ public class UserService {
         return BeanUtil.trans(userMapper.getUser(id), UserVO.class);
     }
 
-    public void updateUser(UserDTO dto) {
+    public void modUser(Long id, UserTO dto) {
         UserInfo info = BeanUtil.trans(dto, UserInfo.class);
+        info.setId(id);
         int count = userMapper.updateUser(info);
         if (count == 0) {
             throw new RuntimeException("update exception");
