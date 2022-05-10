@@ -11,7 +11,7 @@ public class WebApplicationTest {
 
 
     @Test
-    public void test1() {
+    public void testWeb() {
         ApplicationContext context = new AnnotationConfigApplicationContext(SystemConfig.class);
         for (String name : context.getBeanDefinitionNames()) {
             System.out.println(name);
