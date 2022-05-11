@@ -55,8 +55,7 @@ class TestControllerTest {
     @Test
     void updateNameTest() {
         UserTO user = new UserTO();
-        user.setId(1l);
         user.setUsername("lulu");
-        userService.updateUser(user);
+        userService.modUser(1l, user);
     }
 }

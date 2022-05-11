@@ -30,7 +30,7 @@
         </where>
     </select>
 
-    <update id="updateUser" parameterType="com.example.web.model.UserInfo">
+    <update id="modUser" parameterType="com.example.web.model.UserInfo">
         UPDATE user_info
         <trim prefix="set" suffixOverrides=",">
             <if test="username != null">

@@ -12,7 +12,7 @@ import java.util.List;
 @Slf4j
 public class ObsUtil {
 
-    private RestTemplate restTemplate = new RestTemplate();
+    private final RestTemplate restTemplate = new RestTemplate();
 
     /**
      * 演示上传表单文件，文件可以从文件流中获取，也可以读取本地文件

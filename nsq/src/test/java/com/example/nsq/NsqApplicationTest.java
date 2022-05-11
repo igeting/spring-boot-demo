@@ -23,7 +23,7 @@ public class NsqApplicationTest {
     void TestNsqJ() {
         publisher.publish("hello world");
         subscriber.subscribe(message -> {
-            byte msg[] = message.getData();
+            byte[] msg = message.getData();
             String result = new String(msg);
             System.out.println(result);
             message.finish();
@@ -40,7 +40,7 @@ public class NsqApplicationTest {
     void TestNsqClient() {
         produce.produce("hello world");
         consume.consume(message -> {
-            byte msg[] = message.getMessage();
+            byte[] msg = message.getMessage();
             String result = new String(msg);
             System.out.println(result);
             message.finished();

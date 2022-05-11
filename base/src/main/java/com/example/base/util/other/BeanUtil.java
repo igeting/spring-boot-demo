@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BeanUtil {
-    private static Mapper mapper = new DozerBeanMapper();
+    private static final Mapper mapper = new DozerBeanMapper();
 
     public static <D, E> E trans(D d, Class<E> clazz) {
         if (d == null) {

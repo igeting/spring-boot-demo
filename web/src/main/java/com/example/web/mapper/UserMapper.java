@@ -12,5 +12,5 @@ public interface UserMapper extends BaseMapper<UserInfo> {
 
     UserInfo getUser(Long id);
 
-    int updateUser(UserInfo info);
+    int modUser(UserInfo info);
 }

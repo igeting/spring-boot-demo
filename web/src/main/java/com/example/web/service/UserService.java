@@ -29,7 +29,7 @@ public class UserService {
     public void modUser(Long id, UserTO dto) {
         UserInfo info = BeanUtil.trans(dto, UserInfo.class);
         info.setId(id);
-        int count = userMapper.updateUser(info);
+        int count = userMapper.modUser(info);
         if (count == 0) {
             throw new RuntimeException("update exception");
         }
