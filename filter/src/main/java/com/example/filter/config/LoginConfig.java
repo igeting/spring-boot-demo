@@ -17,10 +17,11 @@ public class LoginConfig implements WebMvcConfigurer {
 
         interceptor.addPathPatterns("/**");
 
-        interceptor.excludePathPatterns("/**/login");
         interceptor.excludePathPatterns("/**/*.html");
         interceptor.excludePathPatterns("/**/*.js");
         interceptor.excludePathPatterns("/**/*.css");
+
+        interceptor.excludePathPatterns("/**/login");
 
         interceptor.excludePathPatterns("/swagger-ui/**");
         interceptor.excludePathPatterns("/swagger-resources/**");
