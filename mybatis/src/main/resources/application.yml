@@ -9,3 +9,5 @@ mybatis-plus:
   global-config:
     db-config:
       table-prefix: test_
+  configuration-properties:
+    prefix: test_
