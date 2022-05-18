@@ -20,8 +20,8 @@ public class BaseModel implements Serializable {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(generator = "user_info_s", strategy = GenerationType.IDENTITY)
-    @SequenceGenerator(sequenceName = "user_info_s", name = "user_info_s", allocationSize = 1)
+    @GeneratedValue(generator = "JDBC", strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(sequenceName = "JDBC", name = "JDBC", allocationSize = 1)
     private Long id;
 
     @Column(name = "created_at")
