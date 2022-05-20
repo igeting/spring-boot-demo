@@ -40,7 +40,8 @@ public class SystemConfig {
                 .driverClassName(Driver.class.getName())
                 .url("jdbc:postgresql://127.0.0.1:5432/test")
                 .username("postgres")
-                .password("123456").build();
+                .password("123456")
+                .build();
     }
 
 }
